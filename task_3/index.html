@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style type="text/css">
+    .form {
+      margin-bottom: 20px;
+    }
+
+    .form__input {
+      width: 150px;
+    }
+  </style>
+  <title>Task_3</title>
+</head>
+<body>
+  <form action="" class="form">
+    <input class="form__input" type="text" value="">
+    <button class="form__btn" type="button" name="button">
+      <span>Отправить</span>
+    </button>
+  </form>
+  <div class="form-result"></div>
+  <script>
+    function addEvents() {
+      var form = document.querySelector('.form');
+      var input = form.querySelector('.form__input');
+      var btn = form.querySelector('.form__btn');
+      var formResult = document.querySelector('.form-result');
+
+      btn.addEventListener('click', function(event) {
+        event.preventDefault();
+        var val = input.value.trim();
+        var arr = val.split(' ');
+        var str = 'The shortest length of the word: ';
+        var length = null;
+
+        if (val !== '') {
+          arr.forEach(function(item) {
+            if (!length) {
+              length = item.length;
+            } else if (length > item.length) {
+              length = item.length;
+            }
+          })
+
+          str += length;
+        } else {
+          str += '-';
+        }
+
+        formResult.textContent = str;
+      });
+    }
+
+    addEvents();
+  </script>
+</body>
+</html>

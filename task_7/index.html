@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Task_7</title>
+</head>
+<body>
+  <div>Название функции createHolder(str);</div>
+  <script>
+    function createHolder(str) {
+      var obj = {
+        value: str,
+        setValue: function(str) {
+          obj.value = str;
+        },
+        getValue: function() {
+          return obj.value;
+        },
+      };
+
+      return obj;
+    }
+  </script>
+</body>
+</html>

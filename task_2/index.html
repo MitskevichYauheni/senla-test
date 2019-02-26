@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style type="text/css">
+    .form {
+      margin-bottom: 20px;
+    }
+
+    .form__input {
+      width: 150px;
+    }
+
+    .form-result__row {
+      display: flex;
+    }
+
+    .form-result__item {
+      display: block;
+      width: 100px;
+      height: 50px;
+      margin: 0 10px 10px 0;
+    }
+  </style>
+  <title>Task_2</title>
+</head>
+<body>
+  <form action="" class="form">
+    <input class="form__input" type="number" value="" min="0" max="30">
+    <button class="form__btn" type="button" name="button">
+      <span>Отправить</span>
+    </button>
+  </form>
+  <div class="form-result"></div>
+  <script>
+    function getRandomColor() {
+      var letters = '0123456789ABCDEF';
+      var color = '#';
+      for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+
+    function addEvents() {
+      var form = document.querySelector('.form');
+      var input = form.querySelector('.form__input');
+      var btn = form.querySelector('.form__btn');
+      var formResult = document.querySelector('.form-result');
+      var div, span;
+
+      btn.addEventListener('click', function(event) {
+        event.preventDefault();
+        var val = input.value;
+        var str = '';
+
+        formResult.innerHTML = '';
+
+        if (val > 0 && val <= 30) {
+          for (var i = 1; i <= val; i++) {
+            div = document.createElement('div');
+            div.classList.add('form-result__row');
+
+            for (var j = 1; j <= val; j++) {
+              span = document.createElement('span');
+              span.classList.add('form-result__item');
+              span.style.backgroundColor = getRandomColor();
+              div.appendChild(span);
+            }
+            formResult.appendChild(div);
+          }
+        } else {
+          input.value = 0;
+        }
+      });
+    }
+
+    addEvents();
+  </script>
+</body>
+</html>

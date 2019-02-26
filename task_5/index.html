@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Task_6</title>
+</head>
+<body>
+  <div>Название функции getLowerestIndex(arr, number);</div>
+  <script>
+    function sortArr(arr) {
+      return arr.sort(function(a, b) {
+        return filterSort(+a, +b);
+      });
+    }
+
+    function filterSort(a, b) {
+      if (a > b) return 1;
+      if (a < b) return -1;
+
+      return 0;
+    }
+
+    function getLowerestIndex(arr, number) {
+      var nArr = [];
+      var index = 0;
+      var flag = true;
+      var error = '';
+
+      if (arr.length === 0) {
+        error = 'Ваш массив пустой.';
+      } else if (!+number) {
+        error = 'Второй аргумент не является числом.';
+      }
+
+      if (error === '') {
+        arr.forEach(function(item) {
+          if (!+item) error = 'В массиве присутствует строка.';
+        });
+
+        if (error === '') {
+          nArr = sortArr(arr);
+          nArr.forEach(function(item, i) {
+            if (number <= item && flag) {
+              flag = false;
+              index = i;
+            }
+          });
+        }
+      }
+
+
+      if (error !== '') {
+        return error;
+      } else {
+        return index;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Task_6</title>
+</head>
+<body>
+  <div>Название функции frame(arr, symbol);</div>
+  <script>
+    function frame(arr, symbol) {
+      var nArr = [];
+      var maxLength = 0;
+      var error = '';
+      var strSymbol = '';
+
+      if (arr.length === 0) {
+        error = 'Ваш массив пустой.';
+      } else if (symbol.length > 1) {
+        error = 'Символ должен быть один.';
+      }
+
+      if (error === '') {
+        arr.forEach(function(item) {
+          var str = symbol + ' ' + item + ' ';
+          if (maxLength < item.length + 4) maxLength = item.length + 4;
+          nArr.push(str);
+        });
+
+        nArr.forEach(function(item, i) {
+          if (item.length < maxLength - 1) {
+            for(var k = item.length; k < maxLength - 1; k++) {
+              nArr[i] += ' ';
+            }
+          }
+
+          nArr[i] += symbol;
+        });
+
+        for(var k = 0; k < maxLength; k++) {
+          strSymbol += symbol;
+        }
+        nArr.unshift(strSymbol);
+        nArr.push(strSymbol);
+      }
+
+
+      if (error !== '') {
+        return error;
+      } else {
+        return '\n' + nArr.join('\n');
+        // nArr.forEach(function(item) {
+        //   return console.log(item);
+        // });
+      }
+    }
+  </script>
+</body>
+</html>
